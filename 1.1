@@ -1,0 +1,25 @@
+1.1 Is Unique: Implement an algorithm to determine if a string has all unique characters. 
+What if you cannot use additional data structures? 
+
+def method1(s):
+  return len(set(s)) == len(s) 
+  
+ def method2(s):
+   charList = []
+   for i in s:
+    if i in charList:
+      return False
+    else:
+      charList.append(i)
+    return True
+    
+    
+def method3(s):
+  if len(s) > 128:
+    return False
+  charList = ['']*128
+  for i in range(0, len(s)):
+    val = ord(s[i])
+    if charList[val]:
+      return False
+    charList[val] = True

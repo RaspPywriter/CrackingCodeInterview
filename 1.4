@@ -1,0 +1,43 @@
+# Given a string, write a function to check if it is a permutation of a palindrome.
+#PalidromeChecker - but not a permutation
+def palindromeChecker(s):
+    s = s.lower()
+    for i in s:
+        if s == 1:
+            return True
+        elif i == ' ':
+            s = s[1:]
+            continue
+        elif s.startswith(i) == s.endswith(i):
+            s=s[1:-1]
+        else:
+            return False
+    return True
+print(palindromeChecker('abccba'))
+print(palindromeChecker('abcocba'))
+
+#This checks for palindrome permutation
+def palindrome(s):
+     #check for letters only
+    if s.isalpha == True:
+        return False
+    s = s.lower()
+    countOne = 0
+    for i in s:
+        #test for spaces
+        if i == ' ':
+            break
+        count = s.count(i)
+        if count%2 != 0:
+            countOne +=1
+    if countOne > 1:
+        return False
+    else:
+        return True
+print(palindrome('abccba'))
+print(palindrome('abcocba'))
+print(palindrome('Tact Coa'))
+print(palindrome('Tact Coa '))
+print(palindrome('test'))
+print(palindrome('54aba'))
+print(palindrome('aba'))

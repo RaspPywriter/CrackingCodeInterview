@@ -1,1 +1,46 @@
-#It's often easiest to modify strings by going from the end of the string to the beginning. 
+#URLify: Write a method to replace all spaces in a string with '%20: You may assume that the string has sufficient space at the end to hold the additional characters, and that you are given the "true" length of the string. (Note: If implementing in Java, please use a character array so that you can perform this operation in place.) 
+#EXAMPLE 
+#Input: "Mr John Smith "J 13 
+#Output: "Mr%20J ohn%20Smith" 
+
+#Method1 - remove extra spaces from the end of the string:
+def urlConverter(s):
+  #for multiple spaces at the end of a string
+  while s.endswith(' '):
+    s = s[:-1]
+  newURL =''
+  for i in s:
+    if i != ' ':
+            newURL +=i
+        elif i== ' ':
+          newURL+='%20'  
+    return newURL
+            
+print(urlConverter('Happy Days'))
+print(urlConverter('Happy Days     '))
+
+
+#Method2 - reverse the string and remove spaces from the beginning of the string - then convert it back
+def urlConverter(s):  
+    revString = '' 
+    newString = ''
+    for i in s: 
+        #takes latest letter and moves it forward
+        revString = i + revString     
+        #remove all spaces from the start of the word
+    while revString.startswith(' '):
+        revString = revString[1:]    
+    if not revString.startswith(' '):
+       for i in revString:
+           newString = i + newString   
+    newURL =''
+    #for i in newString:
+    for i in s:
+        #print(i + ' this is i')
+        if i != ' ':
+            newURL +=i
+        else:
+          newURL+='%20'  
+    #print(newURL)
+    return newURL
+

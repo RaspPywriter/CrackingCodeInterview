@@ -1,0 +1,40 @@
+# There are three types of edits that can be performed on strings: insert a character, 
+#remove a character, or replace a character. Given two strings, 
+#write a function to check if they are one edit (or zero edits) away. 
+
+def editChecker(string, string1):
+    #check for letters only
+    if string1.isalpha == True:
+        
+        return False
+    diffCount = 0
+    #make both strings lowercase
+    string = string.lower()
+    string1 = string1.lower()
+    #make sure the difference is not >1 of length
+    if abs(len(string) - len(string1) > 1):
+        return False
+    for i in string:
+        #compare first letter of string with string1 this is so it's in order
+        #if you just want to know if it has the same letters you can use
+        #if i in string1
+        if string1.startswith(i):
+            #remove i from both
+            string = string[1:]
+            string1=string1.replace(i, '')
+        else:
+            #if they are different, 
+            diffCount +=1
+            string = string[1:]
+            string1=string1[1:]
+            
+    if diffCount > 1:
+        return False
+    else:
+        return True
+
+print(editChecker('pale', 'ple'))
+print(editChecker('pales', 'pale'))
+print(editChecker('pale', 'bale'))
+print(editChecker('pale', 'bake'))
+print(editChecker('palepale', 'bake'))

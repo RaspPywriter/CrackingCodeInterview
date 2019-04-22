@@ -1,0 +1,29 @@
+#Given an image represented by an NxN matrix, 
+ #where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees
+ #can you do it inplace?
+ 
+def rotateMatrix(m):
+    rows = len(m)
+    print(m)
+    for x in range(0, int(rows/2)): 
+        for y in range(x, rows-x-1): 
+            temp = m[x][y] 
+            m[x][y] = m[y][rows-1-x] 
+  
+            # move values from bottom to right 
+            m[y][rows-1-x] = m[rows-1-x][rows-1-y] 
+  
+            # move first column on left to the bottom 
+            m[rows-1-x][rows-1-y] = m[rows-1-y][x]   
+            # assign temp to left 
+            m[rows-1-y][x] = temp 
+    #print matrix        
+    for i in range(0, rows): 
+        for j in range(0, rows):        
+            print (m[i][j], end = ' ') 
+        print ("") 
+      
+print(rotateMatrix([ [1, 2, 3, 4 ], 
+        [5, 6, 7, 8 ], 
+        [9, 10, 11, 12 ], 
+        [13, 14, 15, 16 ] ] ))

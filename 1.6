@@ -1,0 +1,27 @@
+#: Implement a method to perform basic string compression using the counts of repeated characters.
+#For example, the string aabcccccaaa would become a2b1c5a3. If the "compressed" string would not 
+#become smaller than the original string, your method should return the original string. 
+
+def stringCompression(s):
+    newString = ''
+    count = 0
+    for i in range(len(s)):
+        if i < len(s)-1:
+            if s[i] == s[i +1]:
+                count += 1
+            else:
+                count +=1
+                newString += s[i] + str(count)
+                count = 0
+        else:
+            count +=1
+            newString += s[i] + str(count) 
+    if len(newString) >= len(s):
+        return s
+    else:
+        return newString
+
+print(stringCompression('aabb'))
+print(stringCompression('ssssaaasss'))
+print(stringCompression('aabcccccaaa'))
+
